@@ -9,6 +9,17 @@ const keyframes = {
       transform: none;
     }
   }`,
+
+  fill: `@keyframes fill {
+    0% { clip-path: circle(0); }
+    100% { clip-path: circle(100%); }
+  }`,
+
+  highlight: `@keyframes highlight {
+    to {
+      height: 40%;
+    }
+  }`,
 }
 
 const animations = {
@@ -16,9 +27,25 @@ const animations = {
     animation: show 500ms ease-out forwards;
     ${keyframes.show}
   `,
+
+  fill: `
+    animation: fill 700ms ease-in forwards;
+    ${keyframes.fill}
+  `,
+
+  highlight: `
+    animation: highlight 500ms ease-in 700ms 1 forwards;
+    ${keyframes.highlight};
+  `,
 }
 
 const colors = {
+  blackOlive: "#393e41",
+  lightGray: "#d3d0cb",
+  meatBrown: "#e2c044",
+  jumbo: "#8A897C",
+  wintergreen: "#587b7f",
+  eerieBlack: "#1e2019",
   blue: "#107090",
   red: "#CA3C25",
   green: "#7FB069",
@@ -35,15 +62,15 @@ const buttonColors = {
 }
 
 const textColors = {
-  text: colors.black,
-  lightText: colors.contentBackground,
+  text: colors.eerieBlack,
+  lightText: colors.blackOlive,
   link: colors.blue,
-  hover: colors.green,
+  hover: colors.meatBrown,
 }
 
 const fontFamilies = {
-  default: "Helvetica Neue",
-  headings: "Roboto, serif",
+  default: "Hind",
+  headings: "Open Sans",
 }
 
 const fontWeights = {
