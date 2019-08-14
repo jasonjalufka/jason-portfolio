@@ -1,69 +1,64 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
+import Layout from "../components/layout"
+import background from "../images/background.svg"
+import logo from "../images/logo.svg"
+import theme from "../theme"
 
-const Container = styled.div`
-  margin: 3rem auto;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const Background = styled.img`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 60vh;
+  width: auto;
+  z-index: -5;
+  user-select: none;
+  ${props => props.theme.animations.fill};
 `
 
-const UserWrapper = styled.div`
+const Logo = styled.img`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 60px;
+`
+
+const Container = styled.div`
+  margin: 25vh auto;
+  max-width: 1440px;
   display: flex;
-  align-items: center;
-  margin: 0 auto 12px auto;
-  &:last-child {
-    margin-bottom: 0;
+`
+
+const Name = styled.h1`
+  font-size: 100px;
+  font-weight: bold;
+
+  ${props => props.theme.animations.show};
+  opacity: 0;
+  transform: translateY(-20px);
+  position: relative;
+
+  &::before {
+    background-color: ${theme.colors.meatBrown};
+    content: "";
+    height: 0%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    ${props => props.theme.animations.highlight};
   }
 `
 
-const Avatar = styled.img`
-  flex: 0 0 96px;
-  width: 96px;
-  height: 96px;
-  margin: 0;
-`
-
-const Description = styled.div`
-  flex: 1;
-  margin-left: 18px;
-  padding: 12px;
-`
-
-const Username = styled.h2`
-  margin: 0 0 12px 0;
-  padding: 0;
-`
-
-const Excerpt = styled.p`
-  margin: 0;
-`
-
-const User = props => (
-  <UserWrapper>
-    <Avatar src={props.avatar} alt="" />
-    <Description>
-      <Username>{props.username}</Username>
-      <Excerpt>{props.excerpt}</Excerpt>
-    </Description>
-  </UserWrapper>
-)
-
 export default () => (
-  <Container>
-    <h1>About Styled Components</h1>
-    <p>Styled Components is cool</p>
-    <User
-      username="Jane Doe"
-      avatar="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg"
-      excerpt="I'm Jane Doe. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-    />
-    <User
-      username="Bob Smith"
-      avatar="https://s3.amazonaws.com/uifaces/faces/twitter/vladarbatov/128.jpg"
-      excerpt="I'm Bob smith, a vertically aligned type of guy. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-    />
-  </Container>
+  <ThemeProvider theme={theme}>
+    <Layout>
+      <Container>
+        <Background src={background} className="bg" alt="background" />
+        <Logo src={logo} className="logo" alt="logo" />
+        <Name>Jason Jalufka</Name>
+      </Container>
+    </Layout>
+  </ThemeProvider>
 )
