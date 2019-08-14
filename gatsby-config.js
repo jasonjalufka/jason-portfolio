@@ -2,7 +2,25 @@ module.exports = {
   siteMetadata: {
     title: `Jason Jalufka Portfolio`,
     description: `Full-Stack Web Developer Personal Portfolio`,
-    author: `@gatsbyjs`,
+    author: `@jasonblehh`,
+    menuLinks: [
+      {
+        name: `home`,
+        link: `/`,
+      },
+      {
+        name: `about`,
+        link: `/about`,
+      },
+      {
+        name: `work`,
+        link: `/work`,
+      },
+      {
+        name: `contact`,
+        link: `/contact`,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -19,6 +37,19 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: [
+            "Montserrat:400,900",
+            "Hind:400,700",
+            "Open Sans",
+            "sans-serif",
+          ],
+        },
       },
     },
     `gatsby-transformer-sharp`,
