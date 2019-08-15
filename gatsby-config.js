@@ -1,7 +1,10 @@
+const config = require(`./src/config`)
+
 module.exports = {
   siteMetadata: {
-    title: `Jason Jalufka Portfolio`,
-    description: `Full-Stack Web Developer Personal Portfolio`,
+    title: config.siteTitle,
+    siteUrl: config.siteUrl,
+    description: config.siteDescription,
     author: `@jasonblehh`,
     menuLinks: [
       {
@@ -48,31 +51,18 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-plugin-web-font-loader`,
-      options: {
-        google: {
-          families: [
-            "Montserrat:400,900",
-            "Hind:400,700",
-            "Open Sans",
-            "sans-serif",
-          ],
-        },
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `JasonJalufka`,
+        short_name: `JasonJalufka`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
