@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        ["@components", "./src/components"],
+        ["@config", "./src/config"],
+        ["@content", "./src/content"],
+        ["@images", "./src/images"],
+        ["@pages", "./src/pages"],
+        ["@templates", "./src/templates"],
+        ["@styles", "./src/styles"]
+      ]
+    }
+  }
+}
