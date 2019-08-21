@@ -25,7 +25,9 @@ const Name = styled.h1`
   font-size: ${fontSizes.xxlarge};
   font-weight: ${fontWeights.bold};
   ${media.desktop`font-size: ${fontSizes.xlarge};`};
+  ${media.thone`font-size: 60px`};
   ${media.phablet`font-size: 50px;`};
+  ${media.phone`font-size: 40px;`};
 `
 
 const Role = styled.h2`
@@ -46,10 +48,18 @@ const Role = styled.h2`
 const WeatherContainer = styled.div`
   position: relative;
   bottom: -33vh;
-  left: -120px;
-  ${media.desktop`left: -70px;`};
-  ${media.tablet`left: -20px;`};
-  ${media.phablet`left: -5px;`};
+  left: -200px;
+  ${media.giant`left: -120px;`};
+  ${media.bigDesktop`left: -150px;`};
+  ${media.desktop`
+    bottom: -37vh;
+    left: -70px;
+  `};
+  ${media.tablet`
+    left: -20px;
+    bottom: -33vh;
+  `};
+  ${media.phablet`display: none;`};
 `
 
 const Weather = styled.h3`
