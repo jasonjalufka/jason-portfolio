@@ -50,12 +50,14 @@ const NavList = styled.ol`
 const NavListItem = styled.li`
   margin: 0 auto 20px;
   position: relative;
-  font-size: ${fontSizes.large};
+  font-size: 40px;
+  font-weight: 200;
   ${media.thone`
     margin: 0 auto 10px;
-    font-size: ${fontSizes.medium};
+    font-size: 30px;
+    /* font-size: ${fontSizes.medium}; */
   `};
-  ${media.tiny`font-size: ${fontSizes.small};`};
+  /* ${media.tiny`font-size: ${fontSizes.small};`}; */
   /* &:before {
     display: block;
     content: ">";
@@ -78,6 +80,20 @@ const ResumeLink = styled.a`
   border: 1px solid ${colors.lightBlue};
   font-size: 20px;
   width: max-content;
+`
+
+const HamburgerResumeLink = styled.a`
+  border: 1px solid ${colors.lightBlue};
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 40px;
+  padding: 2px 30px 10px 30px;
+  font-weight: 200;
+  width: max-content;
+  ${media.thone`
+    margin: 0 auto 10px;
+    font-size: 30px;
+  `};
 `
 
 const Menu = ({ menuOpen, toggleMenu }) => {
@@ -123,13 +139,13 @@ const Menu = ({ menuOpen, toggleMenu }) => {
               </NavLink>
             </NavListItem>
           </NavList>
-          <ResumeLink
+          <HamburgerResumeLink
             href="resume.pdf"
             target="_blank"
             rel="nofollow noopener noreferrer"
           >
             resume
-          </ResumeLink>
+          </HamburgerResumeLink>
         </NavLinks>
       </Sidebar>
     </MenuContainer>
