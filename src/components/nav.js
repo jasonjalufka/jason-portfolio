@@ -2,10 +2,11 @@ import React, { Component } from "react"
 import Helmet from "react-helmet"
 import styled from "styled-components"
 import { Menu } from "@components"
-import { IconLogo } from "@components/icons"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { theme, mixins, media } from "@styles"
+import { navHeight } from "@config"
 import { IconCode } from "./icons"
+import { throttle } from "../utils"
 const { colors, fontSizes, fontWeights } = theme
 
 const NavContainer = styled.header`
@@ -19,6 +20,16 @@ const NavContainer = styled.header`
   pointer-events: auto !important;
   user-select: auto !important;
   width: 100%;
+  height: ${props =>
+    props.scrollDirection === "none" ? theme.navHeight : theme.navScrollHeight};
+  box-shadow: ${props =>
+    props.scrollDirection === "up"
+      ? `0 10px 30px -10px ${colors.hamburgerShadow}`
+      : "none"};
+  transform: translateY(
+    ${props =>
+      props.scrollDirection === "down" ? `-${theme.navScrollHeight}` : "0px"}
+  );
   ${media.desktop`padding: 0 40px;`};
   ${media.tablet`padding: 0 25px;`};
 `
@@ -26,7 +37,6 @@ const NavContainer = styled.header`
 const Navbar = styled.nav`
   ${mixins.flexBetween};
   position: relative;
-  padding-top: 20px;
   width: 100%;
   color: ${colors.white};
   z-index: 12;
@@ -156,14 +166,54 @@ const ResumeLink = styled.a`
   font-weight: ${fontWeights.medium};
 `
 
+const DELTA = 5
 class Nav extends Component {
   state = {
     menuOpen: false,
     scrollDirection: "none",
+    lastScrollTop: 0,
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", () => throttle(this.handleScroll()))
+    window.addEventListener("resize", () => throttle(this.handleResize()))
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", () => this.handleScroll())
+    window.removeEventListener("resize", () => this.handleResize())
+  }
+
+  handleScroll = () => {
+    const { menuOpen, scrollDirection, lastScrollTop } = this.state
+    const fromTop = window.scrollY
+
+    if (Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
+      return
+    }
+
+    if (fromTop < DELTA) {
+      this.setState({ scrollDirection: "none" })
+    } else if (fromTop > lastScrollTop && fromTop > navHeight) {
+      if (scrollDirection !== "down") {
+        this.setState({ scrollDirection: "down" })
+      }
+    } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
+      if (scrollDirection !== "up") {
+        this.setState({ scrollDirection: "up" })
+      }
+    }
+
+    this.setState({ lastScrollTop: fromTop })
+  }
+
+  handleResize = () => {
+    if (window.innerWidth > 768 && this.state.menuOpen) {
+      this.toggleMenu()
+    }
   }
 
   toggleMenu = () => {
-    console.log("CLICKED")
     this.setState({ menuOpen: !this.state.menuOpen })
   }
 

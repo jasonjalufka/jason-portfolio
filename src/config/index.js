@@ -24,4 +24,6 @@ module.exports = {
       url: "https://www.instagram.com/jasonblehh/",
     },
   ],
+
+  navHeight: 100,
 }
