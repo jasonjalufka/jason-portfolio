@@ -1,25 +1,38 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import GlobalStyle from "@styles/globalStyle"
-import { Header } from "@components"
+import { Header, Nav } from "@components"
 import { ThemeProvider } from "styled-components"
-import theme from "@styles"
+import { GlobalStyle, theme } from "@styles"
 import SEO from "./seo"
 
+const getWeatherData = async set => {
+  const response = await fetch("https://jsn-stats.now.sh/weather")
+  const result = await response.json()
+  set({
+    temperature: result.temp,
+    city: result.city,
+  })
+}
+
+export const DataContext = React.createContext({
+  weather: null,
+})
+
 const Layout = ({ children }) => {
+  const [weather, setWeather] = useState(null)
+
+  useEffect(() => {
+    getWeatherData(setWeather)
+  }, [])
+
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query LayoutQuery {
       site {
         siteMetadata {
           title
+          siteUrl
+          description
           menuLinks {
             name
             link
@@ -31,24 +44,17 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <div id="root">
+        <SEO metadata={data.site.siteMetadata} />
+
         <GlobalStyle />
-        <SEO />
-        <Header
-          menuLinks={data.site.siteMetadata.menuLinks}
-          siteTitle={data.site.siteMetadata.title}
-        />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-        </div>
-      </>
+        <DataContext.Provider value={{ weather }}>
+          <div className="container">
+            <Nav />
+            {children}
+          </div>
+        </DataContext.Provider>
+      </div>
     </ThemeProvider>
   )
 }

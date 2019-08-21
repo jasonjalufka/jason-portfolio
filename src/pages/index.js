@@ -1,64 +1,102 @@
 import React from "react"
-import styled, { ThemeProvider } from "styled-components"
-import Layout from "../components/layout"
-import background from "../images/background.svg"
-import logo from "../images/logo.svg"
-import theme from "../theme"
+import { graphql } from "gatsby"
+import styled from "styled-components"
+import { About, Layout, Hero } from "@components"
+import { mixins, Main } from "@styles"
 
-const Background = styled.img`
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  height: 60vh;
-  width: auto;
-  z-index: -5;
-  user-select: none;
-  ${props => props.theme.animations.fill};
-`
-
-const Logo = styled.img`
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  height: 60px;
-`
-
-const Container = styled.div`
-  margin: 25vh auto;
+const MainContainer = styled(Main)`
+  /* margin: auto;
   max-width: 1440px;
-  display: flex;
+  display: flex; */
 `
 
-const Name = styled.h1`
-  font-size: 100px;
-  font-weight: bold;
+export default ({ data }) => (
+  <Layout>
+    <MainContainer id="content">
+      <Hero />
+      <About data={data.about.edges} />
+      {/* <div>
+          {data.projects.edges.map(({ node }, i) => {
+            return (
+              <ul>
+                <li>{node.frontmatter.title}</li>
+                <li>{node.frontmatter.date}</li>
+                <li>{node.frontmatter.github}</li>
+              </ul>
+            )
+          })}
+        </div>
+        <div>
+          {data.jobs.edges.map(({ node }, i) => {
+            return (
+              <ul>
+                <li>{node.frontmatter.date}</li>
+                <li>{node.frontmatter.title}</li>
+                <li>{node.frontmatter.company}</li>
+                <li>{node.frontmatter.location}</li>
+              </ul>
+            )
+          })}
+        </div> */}
+    </MainContainer>
+  </Layout>
+)
 
-  ${props => props.theme.animations.show};
-  opacity: 0;
-  transform: translateY(-20px);
-  position: relative;
-
-  &::before {
-    background-color: ${theme.colors.meatBrown};
-    content: "";
-    height: 0%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    ${props => props.theme.animations.highlight};
+export const pageQuery = graphql`
+  {
+    about: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/about/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            avatar {
+              childImageSharp {
+                fluid(
+                  maxWidth: 700
+                  quality: 90
+                  traceSVG: { color: "#64ffda" }
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
+            skills
+          }
+          html
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/projects/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
+            github
+            show
+          }
+          html
+        }
+      }
+    }
+    jobs: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/jobs/" } }) {
+      edges {
+        node {
+          frontmatter {
+            date
+            title
+            company
+            location
+            range
+            url
+          }
+          html
+        }
+      }
+    }
   }
 `
-
-export default () => (
-  <ThemeProvider theme={theme}>
-    <Layout>
-      <Container>
-        <Background src={background} className="bg" alt="background" />
-        <Logo src={logo} className="logo" alt="logo" />
-        <Name>Jason Jalufka</Name>
-      </Container>
-    </Layout>
-  </ThemeProvider>
-)
