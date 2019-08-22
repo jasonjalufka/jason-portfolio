@@ -2,16 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Layout from "../components/layout"
-import WorkLink from "../components/work-link"
 import styled from "styled-components"
-import { Section, theme } from "@styles"
-import { mixins, media } from "@styles"
-
-const HeaderSection = styled(Section)`
-  ${mixins.headerPadding};
-  max-width: none;
-  height: 50vh;
-`
+import { HeaderSection, theme } from "@styles"
+import { media, mixins } from "@styles"
 
 const Header = styled.h1`
   margin: 0;
@@ -32,6 +25,7 @@ const BodySection = styled.div`
   height: 100%;
   background-color: white;
   color: #1e2022;
+  ${mixins.headerPadding};
 `
 
 const ProjectsContainer = styled.div`
@@ -109,8 +103,6 @@ const Projects = ({
         </ProjectContainer>
       </AniLink>
     ))
-
-  // <WorkLink key={edge.node.id} post={edge.node} />)
 
   return (
     <Layout>
