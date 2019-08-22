@@ -1,7 +1,7 @@
 import { css } from "styled-components"
 import theme from "./theme"
 import media from "./media"
-const { colors, fontSizes } = theme
+const { colors } = theme
 const mixins = {
   flexCenter: css`
     display: flex;
@@ -36,6 +36,12 @@ const mixins = {
     ${media.desktop`padding: 0 100px;`};
     ${media.tablet`padding: 0 50px;`};
     ${media.phablet`padding: 0 25px;`};
+  `,
+
+  headerPadding: css`
+    padding: 150px;
+    ${media.desktop`padding: 100px;`};
+    ${media.thone`padding: 100px 25px;`};
   `,
 }
 
