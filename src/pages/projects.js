@@ -4,7 +4,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import { HeaderSection, theme } from "@styles"
-import { media, mixins } from "@styles"
+import { media } from "@styles"
 
 const Header = styled.h1`
   margin: 0;
@@ -25,7 +25,6 @@ const BodySection = styled.div`
   height: 100%;
   background-color: white;
   color: #1e2022;
-  ${mixins.headerPadding};
 `
 
 const ProjectsContainer = styled.div`
