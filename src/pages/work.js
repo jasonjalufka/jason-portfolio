@@ -6,17 +6,17 @@ import { Main, Section } from "@styles"
 
 const Work = ({
   data: {
-    projects: { edges },
+    work: { edges },
   },
 }) => {
-  const Projects = edges
+  const Work = edges
     .filter(edge => !!edge.node.frontmatter.date)
     .map(edge => <WorkLink key={edge.node.id} post={edge.node} />)
 
   return (
     <Layout>
       <Section>
-        <div>{Projects}</div>
+        <div>{Work}</div>
       </Section>
     </Layout>
   )
@@ -26,29 +26,16 @@ export default Work
 
 export const pageQuery = graphql`
   query {
-    projects: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/projects/" } }
-    ) {
+    work: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/jobs/" } }) {
       edges {
         node {
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            cover {
-              childImageSharp {
-                fluid(
-                  maxWidth: 700
-                  quality: 90
-                  traceSVG: { color: "#64ffda" }
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
-            }
-            github
-            external
-            tech
-            show
+            company
+            location
+            range
+            url
           }
           fields {
             slug
