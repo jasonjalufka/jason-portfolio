@@ -2,32 +2,22 @@ import React from "react"
 
 const IconLogo = () => (
   <svg
-    width="46px"
-    height="36px"
-    viewBox="0 0 46 36"
-    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
+    width="52"
+    height="40"
+    viewBox="0 0 52 40"
   >
-    <title>home-icon</title>
-    <desc>Created with Sketch.</desc>
-    <g
-      id="Page-1"
-      stroke="none"
-      strokeWidth="1"
-      fill="none"
-      fillRule="evenodd"
-      fontFamily="FontAwesome"
-      fontSize="50"
-      fontWeight="normal"
+    <text
+      fill="#C9D6DF"
+      fill-rule="evenodd"
+      font-family="FontAwesome"
+      font-size="50"
+      transform="translate(-48 -42)"
     >
-      <g id="Home" transform="translate(-45.000000, -39.000000)" fill="#C9D6DF">
-        <text id="home-icon">
-          <tspan x="45" y="75">
-            
-          </tspan>
-        </text>
-      </g>
-    </g>
+      <tspan x="47" y="78">
+        
+      </tspan>
+    </text>
   </svg>
 )
 

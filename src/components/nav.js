@@ -5,7 +5,7 @@ import { Menu } from "@components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { theme, mixins, media } from "@styles"
 import { navHeight } from "@config"
-import { IconCode } from "./icons"
+import { IconLogo } from "./icons"
 import { throttle } from "../utils"
 const { colors, fontSizes, fontWeights } = theme
 
@@ -228,7 +228,7 @@ class Nav extends Component {
         <Navbar>
           <Logo>
             <LogoLink fade to="/" duration={0.5}>
-              <IconCode />
+              <IconLogo />
             </LogoLink>
           </Logo>
 
