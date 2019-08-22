@@ -50,9 +50,9 @@ const WeatherContainer = styled.div`
   bottom: -33vh;
   left: -200px;
   ${media.giant`left: -120px;`};
-  ${media.bigDesktop`left: -150px;`};
+  ${media.bigDesktop`left: -120px;`};
   ${media.desktop`
-    bottom: -37vh;
+    bottom: -35vh;
     left: -70px;
   `};
   ${media.tablet`
