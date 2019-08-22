@@ -33,9 +33,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   // Note: the graphql function call returns a Promise
   const { createPage } = actions
-  const result = await graphql(`
+  const projects = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/projects/" } }) {
         edges {
           node {
             fields {
@@ -46,10 +46,10 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  projects.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/work-template.js`),
+      component: path.resolve(`./src/templates/project-template.js`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables
