@@ -4,15 +4,9 @@ import styled from "styled-components"
 import { About, Layout, Hero } from "@components"
 import { mixins, Main } from "@styles"
 
-const MainContainer = styled(Main)`
-  /* margin: auto;
-  max-width: 1440px;
-  display: flex; */
-`
-
 export default ({ data }) => (
   <Layout>
-    <MainContainer id="content">
+    <Main id="content">
       <Hero />
       <About data={data.about.edges} />
       {/* <div>
@@ -38,7 +32,7 @@ export default ({ data }) => (
             )
           })}
         </div> */}
-    </MainContainer>
+    </Main>
   </Layout>
 )
 
