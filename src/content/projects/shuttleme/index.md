@@ -1,6 +1,6 @@
 ---
 date: "2019-08-01"
-title: "ShuttleMe"
+title: "Shuttle.me"
 cover: "./shuttle-me.png"
 github: "https://github.com/jasonjalufka/tax-calculator"
 external: "https://jasonjalufka.github.io/tax-calculator/"
