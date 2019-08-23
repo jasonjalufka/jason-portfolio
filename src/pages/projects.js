@@ -21,6 +21,7 @@ const Description = styled.h4`
 `
 
 const BodySection = styled.div`
+  padding: 40px;
   min-height: 50vh;
   height: 100%;
   background-color: white;
@@ -32,8 +33,6 @@ const ProjectsContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   color: white;
-  position: relative;
-  top: -50px;
 `
 
 const ProjectContainer = styled.div`
