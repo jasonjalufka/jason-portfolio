@@ -43,6 +43,15 @@ const mixins = {
     ${media.desktop`padding: 100px;`};
     ${media.thone`padding: 100px 25px;`};
   `,
+
+  headerSizing: css`
+    font-size: 100px;
+    ${media.tablet`font-size: 80px;`};
+    ${media.thone`font-size: 70px;`};
+    ${media.phablet`font-size: 55px;`};
+    ${media.phone`font-size: 50px;`};
+    ${media.tiny`font-size: 45px;`};
+  `,
 }
 
 export default mixins
