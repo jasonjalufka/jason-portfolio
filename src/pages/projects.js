@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 import { HeaderSection, theme } from "@styles"
 import { media } from "@styles"
+const { colors } = theme
 
 const Header = styled.h1`
   margin: 0;
@@ -42,7 +43,7 @@ const ProjectContainer = styled.div`
   padding: 20px;
   margin: 20px;
   transition: ${theme.transition};
-  background-color: transparent;
+  ${media.phone`width: 320px; height: 220px;`};
   &:before {
     box-shadow: ${theme.boxShadow};
     transition: ${theme.transition};
