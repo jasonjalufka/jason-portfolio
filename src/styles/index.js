@@ -1,3 +1,4 @@
+import animations from "./animations"
 import theme from "./theme"
 import GlobalStyle from "./globalStyle"
 import Main from "./main"
@@ -8,6 +9,7 @@ import Section from "./section"
 import Heading from "./heading"
 
 export {
+  animations,
   theme,
   GlobalStyle,
   Main,
