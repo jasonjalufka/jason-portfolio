@@ -84,7 +84,7 @@ const SocialList = styled.ul`
 
 const SocialLink = styled.a`
   margin: 20px;
-  color: ${colors.lightText};
+  color: ${colors.white};
   width: 40px;
   height: 40px;
   ${media.desktop`width: 30px; height: 30px;`};
@@ -92,11 +92,14 @@ const SocialLink = styled.a`
   &:hover,
   &:focus {
     svg {
-      fill: ${colors.lightBlue};
+      fill: rgba(255, 255, 255, 0.1);
+      stroke-width: 1.3;
     }
   }
   svg {
-    fill: ${colors.white};
+    fill: rgba(0, 0, 0, 0);
+    stroke: ${colors.white};
+    stroke-width: 1;
     transition: ${theme.transition};
     user-select: none;
   }

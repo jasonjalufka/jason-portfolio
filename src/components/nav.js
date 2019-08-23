@@ -261,7 +261,7 @@ class Nav extends Component {
               </NavListItem>
             </NavList>
             <ResumeLink
-              href="www.google.com"
+              href="resume.pdf"
               target="_blank"
               rel="nofollow noopener noreferrer"
             >
