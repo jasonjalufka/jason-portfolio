@@ -73,7 +73,7 @@ const SocialContainer = styled.div`
   animation-delay: 1000ms;
   opacity: 0;
   display: flex;
-  flex-grow: 1;
+  ${media.phablet`flex-grow: 1;`};
   justify-content: center;
   align-items: flex-start;
 `
