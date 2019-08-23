@@ -117,16 +117,28 @@ const Hero = () => {
       <Role>full-stack web developer</Role>
       <SocialContainer>
         <SocialList>
-          <SocialLink>
+          <SocialLink href="mailto:jasonjalufka@gmail.com">
             <IconEmail />
           </SocialLink>
-          <SocialLink>
+          <SocialLink
+            href="https://github.com/jasonjalufka"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             <IconGithub />
           </SocialLink>
-          <SocialLink>
+          <SocialLink
+            href="https://www.linkedin.com/in/jasonjalufka/"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             <IconLinkedIn />
           </SocialLink>
-          <SocialLink>
+          <SocialLink
+            href="https://www.instagram.com/jasonblehh/"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             <IconInstagram />
           </SocialLink>
         </SocialList>
