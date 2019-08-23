@@ -3,10 +3,17 @@ import { email } from "@config"
 import styled from "styled-components"
 import { theme, mixins, media, Section } from "@styles"
 import { DataContext } from "@components/layout"
+import {
+  IconEmail,
+  IconGithub,
+  IconLinkedIn,
+  IconInstagram,
+} from "@components/icons"
 const { colors, fontSizes, fontWeights } = theme
 
 const HeroContainer = styled(Section)`
   ${mixins.flexCenter};
+  position: relative;
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
@@ -46,10 +53,10 @@ const Role = styled.h2`
 `
 
 const WeatherContainer = styled.div`
-  position: relative;
-  bottom: -33vh;
-  left: -200px;
-  ${media.giant`left: -120px;`};
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* ${media.giant`left: -120px;`};
   ${media.bigDesktop`left: -120px;`};
   ${media.desktop`
     bottom: -35vh;
@@ -59,15 +66,46 @@ const WeatherContainer = styled.div`
     left: -20px;
     bottom: -33vh;
   `};
-  ${media.phablet`display: none;`};
+  ${media.phablet`display: none;`}; */
 `
 
 const Weather = styled.h3`
   font-size: 26px;
   font-weight: 200;
-  position: relative;
+  /* position: relative;
   bottom: 0;
-  left: 0%;
+  left: 0; */
+`
+
+const SocialContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: flex-start;
+`
+
+const SocialList = styled.ul`
+  list-style: none;
+`
+
+const SocialLink = styled.a`
+  margin: 20px;
+  color: ${colors.lightText};
+  width: 40px;
+  height: 40px;
+  ${media.desktop`width: 30px; height: 30px;`};
+  ${media.tiny`width: 25px; height: 25px;`};
+  &:hover,
+  &:focus {
+    svg {
+      fill: ${colors.lightBlue};
+    }
+  }
+  svg {
+    fill: ${colors.white};
+    transition: ${theme.transition};
+    user-select: none;
+  }
 `
 
 const Hero = () => {
@@ -77,6 +115,22 @@ const Hero = () => {
     <HeroContainer>
       <Name>Jason Jalufka</Name>
       <Role>full-stack web developer</Role>
+      <SocialContainer>
+        <SocialList>
+          <SocialLink>
+            <IconEmail />
+          </SocialLink>
+          <SocialLink>
+            <IconGithub />
+          </SocialLink>
+          <SocialLink>
+            <IconLinkedIn />
+          </SocialLink>
+          <SocialLink>
+            <IconInstagram />
+          </SocialLink>
+        </SocialList>
+      </SocialContainer>
       <WeatherContainer>
         <Weather>
           {data.weather
