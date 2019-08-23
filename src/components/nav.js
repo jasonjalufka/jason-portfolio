@@ -49,8 +49,8 @@ const Logo = styled.div`
 const LogoLink = styled(AniLink)`
   display: block;
   color: ${colors.lightText};
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   &:hover,
   &:focus {
     svg {
