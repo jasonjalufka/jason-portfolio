@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { email } from "@config"
 import styled from "styled-components"
-import { theme, mixins, media, Section } from "@styles"
+import { animations, theme, mixins, media, Section } from "@styles"
 import { DataContext } from "@components/layout"
 import {
   IconEmail,
@@ -24,6 +24,9 @@ const HeroContainer = styled(Section)`
 `
 
 const Name = styled.h1`
+  ${animations.fadeIn};
+  animation-delay: 400ms;
+  opacity: 0;
   color: ${colors.white};
   display: flex;
   width: 100%;
@@ -38,6 +41,9 @@ const Name = styled.h1`
 `
 
 const Role = styled.h2`
+  ${animations.fadeIn};
+  animation-delay: 700ms;
+  opacity: 0;
   line-height: 1.1;
   color: ${colors.lightBlue};
   font-weight: ${fontWeights.thin};
@@ -78,6 +84,9 @@ const Weather = styled.h3`
 `
 
 const SocialContainer = styled.div`
+  ${animations.fadeIn};
+  animation-delay: 1000ms;
+  opacity: 0;
   display: flex;
   flex-grow: 1;
   justify-content: center;
