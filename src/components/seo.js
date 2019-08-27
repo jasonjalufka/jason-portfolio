@@ -41,7 +41,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `apple-mobile-web-app-status-bar-style`,
-          content: `black-translucent`,
+          content: `black`,
         },
         {
           property: `og:title`,
