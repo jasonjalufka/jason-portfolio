@@ -40,6 +40,10 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          name: `apple-mobile-web-app-status-bar-style`,
+          content: `black-translucent`
+        }
+        {
           property: `og:title`,
           content: title,
         },
