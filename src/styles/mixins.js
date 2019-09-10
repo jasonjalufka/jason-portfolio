@@ -39,7 +39,7 @@ const mixins = {
   `,
 
   headerPadding: css`
-    padding: 150px;
+    padding: 100px;
     ${media.desktop`padding: 100px;`};
     ${media.thone`padding: 100px 25px;`};
   `,
