@@ -14,8 +14,6 @@ const Header = styled.h1`
   font-size: 100px;
   font-weight: 700;
   ${mixins.headerSizing};
-  /* ${media.phablet`font-size: 90px;`}
-  ${media.phone`font-size: 75px;`} */
 `
 
 const TechSection = styled.div``
@@ -144,6 +142,17 @@ export const query = graphql`
         github
         external
         tech
+        cover {
+          childImageSharp {
+            fluid(
+              maxWidth: 1000
+              quality: 100
+              traceSVG: { color: "#64ffda" }
+            ) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
       }
       html
     }
