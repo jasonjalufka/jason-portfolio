@@ -17,5 +17,5 @@ show: "true"
 ---
 
 - A React web app to track university shuttle locations and arrival times
-- Supports all universities using DoubleMap API for tracking
--
+- Supports all universities that use the DoubleMap API
+- Uses Mapbox GL to render real-time routes and bus locations
