@@ -66,8 +66,12 @@ const AvatarContainer = styled.a`
   &:focus {
     background: transparent;
     &:after {
-      top: 15px;
-      left: 15px;
+      top: 5px;
+      left: 5px;
+    }
+    &:before {
+      top: -5px;
+      left: -5px;
     }
     ${Avatar} {
       filter: none;
@@ -84,12 +88,12 @@ const AvatarContainer = styled.a`
     transition: ${theme.transition};
   }
   &:before {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: ${colors.white};
-    mix-blend-mode: screen;
+    border: 1px solid ${colors.white};
+    top: -20px;
+    left: -20px;
+    z-index: 2;
+    /* background-color: ${colors.white}; */
+    /* mix-blend-mode: screen; */
   }
   &:after {
     border: 1px solid ${colors.white};
