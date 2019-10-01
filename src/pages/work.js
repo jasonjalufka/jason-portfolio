@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Helmet from "react-helmet"
 import Layout from "../components/layout"
 import WorkLink from "../components/work-link"
 import { Main, Section } from "@styles"
@@ -15,6 +16,10 @@ const Work = ({
 
   return (
     <Layout>
+      <Helmet>
+        <title>Work</title>
+        <meta name="description" content="Jason Jalufka Work Page" />
+      </Helmet>
       <Section>
         <div>{Work}</div>
       </Section>

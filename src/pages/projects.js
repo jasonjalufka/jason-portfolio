@@ -1,6 +1,7 @@
 import React from "react"
-import { graphql } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { graphql, Link } from "gatsby"
+import Img from "gatsby-image"
+import Helmet from "react-helmet"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import { HeaderSection, theme } from "@styles"
@@ -43,25 +44,10 @@ const ProjectContainer = styled.div`
   padding: 20px;
   margin: 20px;
   transition: ${theme.transition};
+  box-shadow: ${theme.boxShadow};
   ${media.phone`width: 320px; height: 220px;`};
-  &:before {
-    box-shadow: ${theme.boxShadow};
-    transition: ${theme.transition};
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("https://source.unsplash.com/random/400x300");
-    filter: grayscale(100%) brightness(0.4);
-  }
   &:hover {
-    transform: translateY(-15px);
-    &:before {
-      filter: grayscale(0%) brightness(0.5);
-      transform: translateY(10px);
-    }
+    transform: translateY(-10px);
   }
 `
 
@@ -91,7 +77,7 @@ const Projects = ({
   const Projects = edges
     .filter(edge => !!edge.node.frontmatter.date)
     .map(edge => (
-      <AniLink fade to={edge.node.fields.slug}>
+      <Link to={edge.node.fields.slug}>
         <ProjectContainer>
           <Project>
             <ProjectTitle>{edge.node.frontmatter.title}</ProjectTitle>
@@ -100,11 +86,15 @@ const Projects = ({
             ></ProjectDescription>
           </Project>
         </ProjectContainer>
-      </AniLink>
+      </Link>
     ))
 
   return (
     <Layout>
+      <Helmet>
+        <title>Projects</title>
+        <meta name="description" content="Jason Jalufka Projects Page" />
+      </Helmet>
       <HeaderSection>
         <Header>Projects</Header>
         <Description>
