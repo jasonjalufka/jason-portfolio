@@ -1,8 +1,8 @@
 import React, { Component } from "react"
+import { Link } from "gatsby"
 import Helmet from "react-helmet"
 import styled from "styled-components"
 import { Menu } from "@components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { theme, mixins, media } from "@styles"
 import { navHeight } from "@config"
 import { IconLogo } from "./icons"
@@ -46,7 +46,7 @@ const Logo = styled.div`
   ${mixins.flexCenter};
 `
 
-const LogoLink = styled(AniLink)`
+const LogoLink = styled(Link)`
   display: block;
   color: ${colors.white};
   width: 40px;
@@ -153,7 +153,7 @@ const NavListItem = styled.li`
   font-size: 20px;
 `
 
-const NavLink = styled(AniLink)`
+const NavLink = styled(Link)`
   padding: 12px 10px;
 `
 
